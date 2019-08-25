@@ -2,13 +2,13 @@
 
 namespace Roulette
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Create roulette here");
 
-            
+
             Result.ResultTable();
         }
     }

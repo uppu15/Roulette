@@ -13,12 +13,13 @@ namespace Roulette
         static int[] number;
         static string[] column;
 
-        public bool FirstHalf { get; set; }
-        public bool Even { get; set; }
+        public string FirstHalf { get; set; }
+        public string Even { get; set; }
         public string Color { get; set; }
-        public int Dozen { get; set; }
+        public string Dozen { get; set; }
         public int Number { get; set; }
         public string Column { get; set; }
+        public int Row { get; set; }
     }
 
     public class Wheel
@@ -28,7 +29,6 @@ namespace Roulette
 
         public Wheel()
         {
-
             binNumber = new Bin[38];
             for (int n = 0; n < binNumber.Length; n++)
             {
@@ -42,13 +42,14 @@ namespace Roulette
                 binNumber[37].Number = 00;
 
                 //assign if box is lower half or upper half
-                if (i > 0 && i < 19) binNumber[i].FirstHalf = true;
-                else if (i > 18 && i <= 38) binNumber[i].FirstHalf = false;
-
+                if (i > 0 && i < 19) binNumber[i].FirstHalf = "Upper half";
+                else if (i > 18 && i <= 38) binNumber[i].FirstHalf = "Lower half";
+                
+                
                 //assign if box is first, second or third dozen
-                if (i > 0 && i < 13) binNumber[i].Dozen = 1;
-                else if (i > 12 && i < 25) binNumber[i].Dozen = 2;
-                else if (i > 24 && i < 37) binNumber[i].Dozen = 3;
+                if (i > 0 && i < 13) binNumber[i].Dozen = "first";
+                else if (i > 12 && i < 25) binNumber[i].Dozen = "second";
+                else if (i > 24 && i < 37) binNumber[i].Dozen = "third";
 
                 //assign what street a box is in
                 if (i > 0 && i % 3 == 1) binNumber[i].Column = "left";
@@ -58,15 +59,65 @@ namespace Roulette
                 //assign colors to box and determine if is even number.
                 if (i < 37 && i > 0 && i % 2 == 0)
                 {
-                    binNumber[i].Even = true;
+                    binNumber[i].Even = "even";
                 }
                 else if (i < 37 && i % 2 == 1)
                 {
-                    binNumber[i].Even = false;
+                    binNumber[i].Even = "odd";
+                }
+                else
+                {
+                    binNumber[i].Even = "even";
+                }
+
+                //assign rows to box
+                if (i / 3 == 0)
+                {
+                    binNumber[i + 1].Row = 1;
+                }else if (i / 3 == 1)
+                {
+                    binNumber[i + 1].Row = 2;
+                }else if (i / 3 == 2)
+                {
+                    binNumber[i + 1].Row = 3;
+                }else if (i / 3 == 3)
+                {
+                    binNumber[i + 1].Row = 4;
+                }else if (i / 3 == 4)
+                {
+                    binNumber[i + 1].Row = 5;
+                }else if (i / 3 == 5)
+                {
+                    binNumber[i + 1].Row = 6;
+                }else if (i / 3 == 6)
+                {
+                    binNumber[i + 1].Row = 7;
+                }else if (i / 3 == 7)
+                {
+                    binNumber[i + 1].Row = 8;
+                }else if (i / 3 == 8)
+                {
+                    binNumber[i + 1].Row = 9;
+                }else if (i / 3 == 9)
+                {
+                    binNumber[i + 1].Row = 10;
+                }else if (i / 3 == 10)
+                {
+                    binNumber[i + 1].Row = 11;
+                }else if (i / 3 == 11)
+                {
+                    binNumber[i + 1].Row = 12;
+                }else if (i == 0 || i == 37)
+                {
+                    binNumber[i].Row = 0;
                 }
             }
 
             binColor = new Bin[38];
+            for (int i = 0; i < binColor.Length; i++)
+            {
+                binColor[i] = new Bin();
+            }
             //assign color to box
             for (int i = 0; i < binColor.Length; i++)
             {
