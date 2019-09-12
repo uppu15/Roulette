@@ -9,7 +9,6 @@ namespace Roulette
 
         public static void ResultTable()
         {
-
             Random r = new Random();
             int random = r.Next(38);
 
@@ -25,7 +24,6 @@ namespace Roulette
             Console.WriteLine($"Row of {random} is {numberBoard[random].Row}");
             Console.WriteLine($"{random} is {numberBoard[random].FirstHalf}");
             Console.WriteLine($"{random} is {numberBoard[random].Dozen} dozen");
-
         }
 
     }

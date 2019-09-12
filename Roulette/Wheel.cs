@@ -6,13 +6,6 @@ namespace Roulette
 {
     public class Bin
     {
-        static bool[] upDown;
-        static bool[] isEven;
-        static string[] color;
-        static int[] dozen;
-        static int[] number;
-        static string[] column;
-
         public string FirstHalf { get; set; }
         public string Even { get; set; }
         public string Color { get; set; }
@@ -20,6 +13,7 @@ namespace Roulette
         public int Number { get; set; }
         public string Column { get; set; }
         public int Row { get; set; }
+        public int[] TwoRows { get; set; }
     }
 
     public class Wheel
